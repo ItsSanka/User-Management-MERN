@@ -1,0 +1,116 @@
+/* Navbar overall styling */
+.navbar {
+    background-color: #9186a4; /* Eye-catching coral background color */
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+    transition: all 0.3s ease-in-out;
+    /* margin-bottom: 25px; */
+}
+
+/* Navbar container */
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Links styling */
+.navbar .nav-link {
+    color: #ffffff; /* White text color for contrast */
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    border-radius: 5px; /* Rounded corners for links */
+    margin-right: 15px;
+
+}
+
+a{
+    text-decoration: none !important;
+}
+
+.navbar .nav-link:hover {
+    color: #090510; /* Darker coral text color on hover */
+    background-color: rgba(255, 255, 255, 0.2); /* Light white background on hover */
+    text-decoration: none; /* Remove underline on hover */
+    box-shadow: 0px 2px 4px rgba(255, 255, 255, 0.4); /* White shadow on hover */
+}
+
+/* Active link styling */
+.navbar .active .nav-link {
+    color: #090510; /* Darker coral text color for active link */
+    font-weight: 700; /* Make the active link bold */
+    background-color: rgba(255, 255, 255, 0.25); /* Light white background for active link */
+}
+
+/* Links container */
+.navbar .nav {
+    display: flex;
+    gap: 25px; /* Increased space between links */
+}
+
+/* Additional styling for the 'home-a' class */
+.home-a .nav-link {
+    color: #ffffff; /* White color specifically for the home link */
+    background-color: rgba(0, 0, 0, 0.1); /* Light black background */
+}
+
+.home-a .nav-link:hover {
+    color: #ff3b3b; /* Darker coral on hover for home link */
+    background-color: rgba(0, 0, 0, 0.2); /* Darker black background on hover */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Black shadow on hover */
+}
+
+.regi{
+    display: flex;
+    gap: 15px;
+}
+
+.regi button {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #090510;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+  }
+  
+  .regi button:hover {
+    background-color: #403a49;
+    transform: translateY(-2px);
+  }
+  
+  .regi button:active {
+    background-color: #003d7a;
+    transform: translateY(1px);
+  }
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+        border-bottom: 2px solid #ff3b3b; /* Adjust border width */
+    }
+
+    .navbar .nav-link {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    .navbar .nav {
+        gap: 20px;
+    }
+}
+
+/* Additional hover effect for the entire navbar */
+.navbar:hover {
+    border-bottom-color: #e63e3e; /* Slightly darker coral on hover */
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.25); /* Deeper shadow on hover */
+}

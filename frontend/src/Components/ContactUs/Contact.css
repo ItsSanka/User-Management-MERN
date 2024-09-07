@@ -1,0 +1,23 @@
+.btn{
+    background-color: #4CAF50;
+    color: aliceblue;
+    margin-top: 10px;
+}
+
+.btn:hover{
+    background-color: #39853b;
+    color: aliceblue;
+}
+
+input{
+    margin-bottom: 10px;
+}
+
+textarea{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
