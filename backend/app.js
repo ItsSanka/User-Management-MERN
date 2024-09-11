@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./Route/UserRoutes");
 const cors = require("cors");
+const multer = require("multer"); // Consistent use of multer
+const path = require("path");
+const fs = require("fs");
 
 const app = express();
 
@@ -42,7 +45,7 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email });  // Corrected the query
+    const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
@@ -56,3 +59,52 @@ app.post("/login", async (req, res) => {
     res.status(500).json({ error: "Server error" });
   }
 });
+
+// Gallery
+require("./Model/imgModel");
+const ImgSchema = mongoose.model("ImgModel");
+
+// Multer configuration
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    const uploadDir = path.join(__dirname, "public/uploads");
+    
+    // Create the directory if it doesn't exist
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + file.originalname;
+    cb(null, uniqueSuffix);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+// Upload Image Route
+app.post("/uploadImg", upload.single("image"), async (req, res) => {
+  const imageName = req.file.filename;
+
+  try {
+    await ImgSchema.create({ image: imageName }); // 'image' should be lowercase
+    res.json({ status: "ok" });
+  } catch (error) {
+    res.json({ status: "error", error: error.message });
+  }
+});
+
+// Get Images Route
+app.get("/getImage", async (req, res) => {
+  try {
+    const images = await ImgSchema.find({});
+    res.send({ status: "ok", data: images });
+  } catch (error) {
+    res.json({ status: "error", error: error.message });
+  }
+});
+
+// Serve static files from uploads folder
+app.use("/files", express.static(path.join(__dirname, "public/uploads")));

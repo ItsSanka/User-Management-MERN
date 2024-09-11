@@ -37,6 +37,12 @@ function NavBar() {
             >
               <Nav.Link as="div">Contact Us</Nav.Link>
             </NavLink>
+            <NavLink
+              to="/gallery"
+              className={({ isActive }) => (isActive ? "active" : "")}
+            >
+              <Nav.Link as="div">Gallery</Nav.Link>
+            </NavLink>
           </Nav>
           <div className="regi">
             <Link to="/regi" className="active">

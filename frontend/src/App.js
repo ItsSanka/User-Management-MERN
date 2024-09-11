@@ -8,6 +8,7 @@ import UpdateUser from "./Components/UpdateUser/UpdateUser";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
 import ContactUs from "./Components/ContactUs/ContactUs";
+import Gallery from "./Components/Gallery/Gallery";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/adduser" element={<AddUser />} />
           <Route path="/userdetails" element={<Users />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/regi" element={<Register />} />
           <Route path="/log" element={<Login />} />
           <Route path="/userdetails/:id" element={<UpdateUser />} /> 
